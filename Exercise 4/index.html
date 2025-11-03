@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Pirouette Exhibition Experience</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+        <div class="pixel-background">
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+        </div>
+        <div class="content-wrapper">
+            <h1 id="typewriter-text"></h1>
+            <button id="click-here" class="nav-button hidden">Click Here</button>
+        </div>
+    </div>
+
+    <!-- Page 1 -->
+    <div id="page-1" class="page">
+        <div class="pixel-background">
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+        </div>
+        <div class="content-wrapper">
+            <img class="exhibit-image" id="img-1" alt="I Love NY Typography Exhibition">
+            <div class="text-block fade-in">
+                <p>I initially expected a more digital or pixelated experience, but was pleasantly surprised by the range of mechanical and elemental designs presented.</p>
+            </div>
+            <button class="nav-button next-button" data-next="page-2">Next</button>
+        </div>
+    </div>
+
+    <!-- Page 2 -->
+    <div id="page-2" class="page">
+        <div class="pixel-background">
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-block fade-in">
+                <p>This experience led me to reflect on the boundaries between practical design and expressive art</p>
+            </div>
+            <img class="exhibit-image" id="img-2" alt="Stacked Drawers Design Installation">
+            <button class="nav-button next-button" data-next="page-3">Next</button>
+        </div>
+    </div>
+
+    <!-- Page 3 -->
+    <div id="page-3" class="page">
+        <div class="pixel-background">
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+        </div>
+        <div class="content-wrapper">
+            <img class="exhibit-image" id="img-3" alt="Robotic Dog Sculpture">
+            <div class="text-block fade-in">
+                <p>I had a truly wonderful time exploring the wide array of human innovation and creativity on display at the Pirouette exhibit</p>
+            </div>
+            <button class="nav-button next-button" data-next="page-4">Next</button>
+        </div>
+    </div>
+
+    <!-- Page 4 -->
+    <div id="page-4" class="page">
+        <div class="pixel-background">
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+        </div>
+        <div class="content-wrapper">
+            <div class="text-block fade-in">
+                <p>While some works leaned more heavily toward one or the other, many embodied a breathtaking fusion of beauty, functionality, and rational design—leaving me genuinely in awe.</p>
+            </div>
+            <img class="exhibit-image" id="img-4" alt="Flip Phone on Pedestal">
+            <button class="nav-button next-button" data-next="page-5">Next</button>
+        </div>
+    </div>
+
+    <!-- Page 5 -->
+    <div id="page-5" class="page">
+        <div class="pixel-background">
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+            <div class="pixel-square"></div>
+        </div>
+        <div class="content-wrapper">
+            <img class="exhibit-image" id="img-5" alt="Yellow Crocs Design">
+            <div class="text-block fade-in">
+                <p>From the earliest iterations of the hairdryer to the exploration of various typographies, I found myself immersed in the multifaceted world of invention and design.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        const typewriterText = document.getElementById('typewriter-text');
+        const clickButton = document.getElementById('click-here');
+        const nextButtons = document.querySelectorAll('.next-button');
+        
+        const fullText = "My Enlightening Experience at the Pirouette Exhibit (10/27)";
+        let charIndex = 0;
+        
+        // Set image sources directly
+        document.getElementById('img-1').src = 'image.jpg';
+        document.getElementById('img-2').src = 'image2.jpg';
+        document.getElementById('img-3').src = 'image3.jpg';
+        document.getElementById('img-4').src = 'image4.jpg';
+        document.getElementById('img-5').src = 'image5.jpg';
+        
+        function typeWriter() {
+            if (charIndex < fullText.length) {
+                typewriterText.textContent += fullText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 80);
+            } else {
+                clickButton.classList.remove('hidden');
+                clickButton.classList.add('visible');
+            }
+        }
+        
+        setTimeout(typeWriter, 500);
+        
+        // Click here button functionality
+        clickButton.addEventListener('click', () => {
+            navigateToPage('page-1');
+        });
+        
+        // Next buttons functionality
+        nextButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const nextPageId = button.getAttribute('data-next');
+                navigateToPage(nextPageId);
+            });
+        });
+        
+        function navigateToPage(pageId) {
+            // Remove active class from all pages
+            pages.forEach(page => page.classList.remove('active'));
+            
+            // Add active class to target page
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.classList.add('active');
+                
+                // Trigger fade-in animation for text blocks
+                setTimeout(() => {
+                    const textBlock = targetPage.querySelector('.text-block');
+                    if (textBlock) {
+                        textBlock.classList.add('visible');
+                    }
+                }, 100);
+            }
+        }
+        
+        // Initialize first page text block visibility
+        const landingTextBlock = document.querySelector('#landing-page .text-block');
+        if (landingTextBlock) {
+            landingTextBlock.classList.add('visible');
+        }
+    </script>
+</body>
+</html>
